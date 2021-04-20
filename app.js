@@ -27,7 +27,7 @@ app.get("/", (req, res) => {
 
     /* new Date() pega o dia atual que é um número,
          getDay é um array que devolve um array número, que cada numero representa um dia. */
-   res.render("list", {kindOfDay: day,
+   res.render("list", {listTitle: day,
                        newListItems: items})
 })
 
