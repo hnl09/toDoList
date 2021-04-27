@@ -1,5 +1,6 @@
 const express = require("express")
 const app = express()
+const date = require(__dirname + "/date.js")
 const port = 3000
 let items = ["Buy Food", "Cook Food", "Eat food"]
 
@@ -16,18 +17,9 @@ app.listen(port, () => {
 
 app.get("/", (req, res) => {
 
-    let today = new Date()
-    let options = {
-        weekday: "long",
-        day:    "numeric",
-        month:  "long"
-    }
+  let day = date.getDate() // Mudar essa função para getDate ou getDay para alterar a funcionalidade
 
-    let day = today.toLocaleDateString("pt-BR", options)
-
-    /* new Date() pega o dia atual que é um número,
-         getDay é um array que devolve um array número, que cada numero representa um dia. */
-   res.render("list", {listTitle: day,
+  res.render("list", {listTitle: day,
                        newListItems: items})
 })
 
